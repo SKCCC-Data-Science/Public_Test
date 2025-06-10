@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TEST_SECRET: ${{ secrets.TEST_SECRET }}  # GitHub secret
+      TEST_SECRET: ${{ secrets.REPO_SECRET }}  # GitHub secret
 
     steps:
       - name: Checkout repo
