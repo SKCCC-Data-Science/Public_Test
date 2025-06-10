@@ -1,0 +1,26 @@
+name: Render Report
+
+on:
+  push:
+    branches: [main]   # Or whatever branch triggers the workflow
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    env:
+      TEST_SECRET: ${{ secrets.TEST_SECRET }}  # GitHub secret
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install packages
+        run: |
+          Rscript -e 'install.packages("readxl")'
+
+      - name: Run R Script
+        run: Rscript your_script.R
